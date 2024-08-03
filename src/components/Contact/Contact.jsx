@@ -1,6 +1,6 @@
 import css from "./Contact.module.css";
 
-const Contact = ({ contacts }) => {
+const Contact = ({ contacts, onDeleteContact }) => {
   return contacts.map((contact) => {
     return (
       <li key={contact.id} className={css.item}>
@@ -8,7 +8,11 @@ const Contact = ({ contacts }) => {
           <p>{contact.name}</p>
           <p>{contact.number}</p>
         </div>
-        <button className={css.deleteBtn} type="button">
+        <button
+          className={css.deleteBtn}
+          type="button"
+          onClick={() => onDeleteContact(contact.id)}
+        >
           Delete
         </button>
       </li>

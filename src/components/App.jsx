@@ -7,17 +7,30 @@ import css from "./App.module.css";
 
 const App = () => {
   const [contacts, setContacts] = useState(contactsList);
+  const [searchValue, setSearchValue] = useState("");
 
-  const contactOnDelete = () => {
-    setContacts();
+
+  const showValueSearch = (event) => {
+    setSearchValue(event.target.value);
+  };
+
+  const visibleContact = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
+  const onDeleteContact = (contactId) => {
+    setContacts(contacts.filter((contact) => contact.id !== contactId));
   };
 
   return (
     <div>
       <h1 className={css.title}>Phonebook</h1>
       <ContactForm />
-      <SearchBox />
-      <ContactList contacts={contacts} contactOnDelete={contactOnDelete} />
+      <SearchBox searchValue={searchValue} showValueSearch={showValueSearch} />
+      <ContactList
+        contacts={visibleContact}
+        onDeleteContact={onDeleteContact}
+      />
     </div>
   );
 };

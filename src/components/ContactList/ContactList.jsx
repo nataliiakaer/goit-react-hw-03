@@ -1,10 +1,10 @@
 import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <ul className={css.list}>
-      <Contact contacts={contacts} />
+      <Contact contacts={contacts} onDeleteContact={onDeleteContact}/>
     </ul>
   );
 };
