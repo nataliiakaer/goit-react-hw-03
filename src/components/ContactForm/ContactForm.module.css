@@ -27,3 +27,8 @@
   background-color: rgb(241, 233, 165);
   border-color: white;
 }
+
+.errorText {
+  color: red;
+  padding-top: 4px;
+}
